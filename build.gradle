@@ -1,0 +1,42 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  
+  dependencies {
+    classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.6.RELEASE'
+  }
+}
+
+apply plugin : 'java'
+apply plugin : 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+            'Implementation-Version': version,
+            'Main-Class': 'reco.Example'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories{
+    jcenter()
+}
+dependencies{
+         compile("org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE")
+         compile("org.springframework.boot:spring-boot-starter-data-jpa:1.5.6.RELEASE")
+         compile("com.zaxxer:HikariCP")
+         compile("org.springframework.boot:spring-boot-starter-freemarker:1.5.6.RELEASE")
+         compile("com.h2database:h2:1.4.187")
+         compile("org.apache.commons:commons-lang3:3.5")
+         testCompile("org.springframework.boot:spring-boot-starter-test : 1.5.6.RELEASE")
+}
+
