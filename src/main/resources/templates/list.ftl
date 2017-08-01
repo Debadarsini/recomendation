@@ -31,7 +31,7 @@
  
                     <div class="row">
                         <div class="form-actions floatRight">
-                            <input type="submit"  value="{{!ctrl.feature.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                            <input type="submit"  value="{{!ctrl.feature.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" >
                             <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
                         </div>
                     </div>
